@@ -1,0 +1,21 @@
+# Sistema / editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.iml
+
+# Dependências e builds (comuns a vários stacks)
+node_modules/
+build/
+dist/
+.dart_tool/
+.expo/
+venv/
+.venv/
+__pycache__/
+
+# Segredos
+.env
+.env.*
+*.keystore
