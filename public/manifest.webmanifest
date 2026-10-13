@@ -1,0 +1,16 @@
+{
+  "name": "Gasometro - nivel de gas e aviso no WhatsApp",
+  "short_name": "Gasometro",
+  "description": "Acompanhe o nivel do botijao, a previsao de troca e receba o aviso no WhatsApp.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b1220",
+  "theme_color": "#0b1220",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

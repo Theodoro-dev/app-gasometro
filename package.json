@@ -1,0 +1,27 @@
+{
+  "name": "gasometro",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Gasometro - medicao de gas (botijao) com previsao de troca e aviso por WhatsApp",
+  "type": "commonjs",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "db:criar": "bash scripts/setup_db.sh",
+    "db:testar": "bash scripts/testar_db.sh",
+    "seed": "node scripts/seed.js",
+    "simulador": "node scripts/simulador_esp32.js",
+    "demo": "node scripts/demo_e2e.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.11.3"
+  }
+}

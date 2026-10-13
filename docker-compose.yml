@@ -1,0 +1,61 @@
+# ---------------------------------------------------------------------
+# Gasometro - sobe banco + API + app com um comando:  docker compose up --build
+# O MySQL roda o schema_v2.sql e o patch do WhatsApp na primeira subida,
+# e a API roda o seed antes de atender.
+# ---------------------------------------------------------------------
+services:
+  banco:
+    image: mysql:8.0
+    container_name: gasometro-banco
+    command:
+      - --default-time-zone=-03:00
+      - --event-scheduler=ON
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_0900_ai_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: gas
+    volumes:
+      - dados-mysql:/var/lib/mysql
+      - ./db/schema_v2.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./db/patch_v3_whatsapp.sql:/docker-entrypoint-initdb.d/02-patch.sql:ro
+      - ./db/usuario_api.sql:/docker-entrypoint-initdb.d/03-usuario.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
+
+  app:
+    build: .
+    container_name: gasometro-app
+    depends_on:
+      banco:
+        condition: service_healthy
+    environment:
+      PORT: 3000
+      DB_HOST: banco
+      DB_PORT: 3306
+      DB_USER: gasometro
+      DB_PASSWORD: gasometro
+      DB_NAME: gas
+      JWT_SECRET: ${JWT_SECRET:-troque-este-segredo-ao-publicar}
+      TZ: America/Sao_Paulo
+      # WhatsApp: simulado | meta | twilio  (ver .env.example)
+      WHATSAPP_PROVIDER: ${WHATSAPP_PROVIDER:-simulado}
+      META_PHONE_NUMBER_ID: ${META_PHONE_NUMBER_ID:-}
+      META_TOKEN: ${META_TOKEN:-}
+      TWILIO_ACCOUNT_SID: ${TWILIO_ACCOUNT_SID:-}
+      TWILIO_AUTH_TOKEN: ${TWILIO_AUTH_TOKEN:-}
+      TWILIO_WHATSAPP_FROM: ${TWILIO_WHATSAPP_FROM:-}
+      DEMO_MODE: ${DEMO_MODE:-true}
+      # Cria o local, o usuario demo e os medidores antes de subir a API
+      ESPERA_BANCO: "1"
+    command: ["sh", "-c", "npm run seed || true; node src/server.js"]
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+volumes:
+  dados-mysql:
