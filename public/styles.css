@@ -9,7 +9,7 @@
   --borda:#243350;
   --texto:#e8eefb;
   --texto-fraco:#96a4bf;
-  --verde:#2ee6a8;
+  --azul-ceu:#00bfff;
   --amarelo:#f5c451;
   --vermelho:#ff6b6b;
   --azul:#5aa9ff;
@@ -37,7 +37,7 @@ a{color:var(--azul)}
 .tela-login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:22px}
 .login-caixa{width:100%;max-width:420px}
 .marca{display:flex;gap:12px;align-items:center;margin-bottom:18px}
-.marca-icone{color:var(--verde);display:flex}
+.marca-icone{color:var(--azul-ceu);display:flex}
 .marca h1{font-size:26px;letter-spacing:-.5px;margin:0}
 .marca p{margin:0;color:var(--texto-fraco);font-size:13px}
 .cartao{background:var(--cartao);border:1px solid var(--borda);border-radius:var(--raio);padding:18px;box-shadow:var(--sombra)}
@@ -70,10 +70,10 @@ input:focus,select:focus{outline:2px solid rgba(90,169,255,.45);border-color:var
 .topo-esq{display:flex;align-items:center;gap:10px;min-width:0}
 .topo-esq strong{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .topo-dir{display:flex;align-items:center;gap:8px}
-.ponto-status{width:10px;height:10px;border-radius:50%;background:var(--verde);box-shadow:0 0 0 4px rgba(46,230,168,.15);flex:0 0 auto}
+.ponto-status{width:10px;height:10px;border-radius:50%;background:var(--azul-ceu);box-shadow:0 0 0 4px rgba(46,230,168,.15);flex:0 0 auto}
 .ponto-status.ruim{background:var(--vermelho);box-shadow:0 0 0 4px rgba(255,107,107,.15)}
 .selo{font-size:11.5px;padding:5px 9px;border-radius:999px;border:1px solid var(--borda);background:var(--cartao-2);color:var(--texto-fraco);white-space:nowrap}
-.selo.verde{color:#0a2b1e;background:var(--verde);border-color:var(--verde);font-weight:700}
+.selo.azul-ceu{color:#0a2b1e;background:var(--azul-ceu);border-color:var(--azul-ceu);font-weight:700}
 .selo.amarelo{color:#3a2b06;background:var(--amarelo);border-color:var(--amarelo);font-weight:700}
 
 .conteudo{padding:16px;max-width:1040px;width:100%;margin:0 auto;flex:1}
@@ -89,7 +89,7 @@ input:focus,select:focus{outline:2px solid rgba(90,169,255,.45);border-color:var
   color:var(--texto-fraco);font-size:10.5px;font-weight:600;cursor:pointer;border-radius:10px;
 }
 .aba svg{width:21px;height:21px;fill:currentColor;opacity:.85}
-.aba.ativa{color:var(--verde);background:rgba(46,230,168,.08)}
+.aba.ativa{color:var(--azul-ceu);background:rgba(46,230,168,.08)}
 .aba.ativa svg{opacity:1}
 
 /* ---------------- Componentes ---------------- */
@@ -112,7 +112,7 @@ input:focus,select:focus{outline:2px solid rgba(90,169,255,.45);border-color:var
 .anel .valor span{font-size:10px;color:var(--texto-fraco);text-transform:uppercase;letter-spacing:.06em}
 
 .etiqueta{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:999px}
-.etiqueta.CHEIO,.etiqueta.ATIVO{background:rgba(46,230,168,.16);color:var(--verde);border:1px solid rgba(46,230,168,.35)}
+.etiqueta.CHEIO,.etiqueta.ATIVO{background:rgba(46,230,168,.16);color:var(--azul-ceu);border:1px solid rgba(46,230,168,.35)}
 .etiqueta.BAIXO{background:rgba(245,196,81,.16);color:var(--amarelo);border:1px solid rgba(245,196,81,.35)}
 .etiqueta.CRITICO,.etiqueta.OFFLINE{background:rgba(255,107,107,.16);color:var(--vermelho);border:1px solid rgba(255,107,107,.35)}
 .etiqueta.INATIVO,.etiqueta.SEM{background:rgba(150,164,191,.14);color:var(--texto-fraco);border:1px solid var(--borda)}
